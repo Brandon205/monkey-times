@@ -18,6 +18,11 @@ export default function TimerComponent(props) {
         setRunning(false)
         setTime(msToTime(stopwatch.getElapsedRunningTime()))
         // TODO: Database call to store the new time
+        if (user) {
+            // use the db to store times
+        } else {
+            // no user so store times elsewhere (LS maybe?)
+        }
         props.generateScramble();
     }
 
@@ -26,8 +31,8 @@ export default function TimerComponent(props) {
             <h2 className='text-white text-8xl'>{time}</h2>
             <div className="flex gap-4">
                 {running ? 
-                    <button onClick={() => stop()} className='p-3 text-white rounded-md bg-zinc-800'>Pause Stopwatch</button> : 
-                    <button onClick={() => start()} className='p-3 text-white rounded-md bg-zinc-800'>Start Stopwatch</button>
+                    <button onClick={() => stop()} className='p-3 text-white rounded-md bg-zinc-800' type='button' autofocus>Pause Stopwatch</button> : 
+                    <button onClick={() => start()} className='p-3 text-white rounded-md bg-zinc-800' type='button' autofocus>Start Stopwatch</button>
                 }
             </div>
         </div>
