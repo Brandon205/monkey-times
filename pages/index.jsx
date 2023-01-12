@@ -6,6 +6,7 @@ import { MdOutlineArrowBack } from 'react-icons/md';
 
 import TimerComponent from '../components/TimerComponent';
 import Loader from '../components/Loader';
+import Times from '../components/Times';
 
 export default function Home() {
   const [scramble, setScramble] = useState("");
@@ -46,6 +47,7 @@ export default function Home() {
         <option value="777">7x7x7</option>
       </select>
       <Loader show={loading} />
+      {/* <Times /> */}
       <ScrambleComponent scramble={scramble} lastScramble={lastScramble} generateScramble={generateScramble} setScramble={setScramble} />
       <TimerComponent scramble={scramble} generateScramble={generateScramble} />
     </div>

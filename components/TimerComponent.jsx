@@ -18,11 +18,11 @@ export default function TimerComponent(props) {
         setRunning(false)
         setTime(msToTime(stopwatch.getElapsedRunningTime()))
         // TODO: Database call to store the new time
-        if (user) {
-            // use the db to store times
-        } else {
-            // no user so store times elsewhere (LS maybe?)
-        }
+        // if (user) {
+        //     // use the db to store times
+        // } else {
+        //     // no user so store times elsewhere (LS maybe?)
+        // }
         props.generateScramble();
     }
 
