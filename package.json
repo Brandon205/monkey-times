@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@amplication/react-compound-timer": "^2.1.0",
     "@next/font": "13.1.1",
+    "cubing": "^0.35.6",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "firebase": "^9.15.0",
@@ -17,7 +19,8 @@
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hot-toast": "^2.4.0"
+    "react-hot-toast": "^2.4.0",
+    "react-icons": "^4.7.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
