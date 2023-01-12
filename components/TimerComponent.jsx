@@ -17,12 +17,12 @@ export default function TimerComponent(props) {
         stopwatch.pause()
         setRunning(false)
         setTime(msToTime(stopwatch.getElapsedRunningTime()))
-        // TODO: Database call to store the new time
-        // if (user) {
-        //     // use the db to store times
-        // } else {
-        //     // no user so store times elsewhere (LS maybe?)
-        // }
+        if (props.user) {
+            // TODO: use the db to store times
+        } else {
+            // no user so store times in LS
+            localStorage.setItem
+        }
         props.generateScramble();
     }
 
