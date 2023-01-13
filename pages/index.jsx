@@ -46,10 +46,11 @@ export default function Home(props) {
 
   const addNewTime = (newTime) => {
     let timeObj = {scramble, time: newTime};
-    let updatedStorage = storedTimes.push(timeObj);
-    updatedStorage = JSON.stringify(updatedStorage);
+    storedTimes.push(timeObj);
+    let updatedStorage = JSON.stringify(storedTimes);
 
     localStorage.setItem('monkeyTimes' + session, updatedStorage);
+    console.log(localStorage.getItem('monkeyTimes' + session))
   }
 
   return (

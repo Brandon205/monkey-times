@@ -17,7 +17,6 @@ export default function Times(props) {
             return (
                 <div key={id}>
                     <p className="text-white inline">{msToTime(item.time)} </p>
-                    <p className="inline text-gray">{item.scramble}</p>
                 </div>
             )
     })
