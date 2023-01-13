@@ -24,7 +24,7 @@ export default function Home(props) {
     } else {
       setStoredTimes(getGuestTimes(session))
     }
-  }, [])
+  }, [session])
 
   const generateScramble = async (newEvent) => {
     setLoading(false)
@@ -44,6 +44,14 @@ export default function Home(props) {
     generateScramble(e.target.value);
   }
 
+  const addNewTime = (newTime) => {
+    let timeObj = {scramble, time: newTime};
+    let updatedStorage = storedTimes.push(timeObj);
+    updatedStorage = JSON.stringify(updatedStorage);
+
+    localStorage.setItem('monkeyTimes' + session, updatedStorage);
+  }
+
   return (
     <div className="flex flex-col justify-center h-screen items-center gap-10">
       <Times user={null} session={session} setSession={setSession} storedTimes={storedTimes} />
@@ -57,7 +65,7 @@ export default function Home(props) {
       </select>
       <Loader show={loading} />
       <ScrambleComponent scramble={scramble} lastScramble={lastScramble} generateScramble={generateScramble} setScramble={setScramble} />
-      <TimerComponent scramble={scramble} generateScramble={generateScramble} session={session} />
+      <TimerComponent scramble={scramble} generateScramble={generateScramble} session={session} addNewTime={addNewTime} />
     </div>
   )
 }

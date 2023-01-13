@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useTimer } from 'react-use-precision-timer';
+import { msToTime, msToTimeSlow } from '../lib/helper';
 
 export default function TimerComponent(props) {
     const [time, setTime] = useState('00:00.000');
@@ -21,7 +22,7 @@ export default function TimerComponent(props) {
             // TODO: use the db to store times
         } else {
             // no user so store times in LS
-            localStorage.setItem
+            props.addNewTime(stopwatch.getElapsedRunningTime())
         }
         props.generateScramble();
     }
@@ -37,36 +38,4 @@ export default function TimerComponent(props) {
             </div>
         </div>
     )
-}
-
-function msToTime(s) {
-
-    function pad(n, z) {
-      z = z || 2;
-      return ('00' + n).slice(-z);
-    }
-  
-    var ms = s % 1000;
-    s = (s - ms) / 1000;
-    var secs = s % 60;
-    s = (s - secs) / 60;
-    var mins = s % 60;
-  
-    return pad(mins) + ':' + pad(secs) + '.' + pad(ms, 3);
-}
-
-function msToTimeSlow(s) {
-
-    function pad(n, z) {
-      z = z || 2;
-      return ('00' + n).slice(-z);
-    }
-  
-    var ms = s % 1000;
-    s = (s - ms) / 1000;
-    var secs = s % 60;
-    s = (s - secs) / 60;
-    var mins = s % 60;
-  
-    return pad(mins) + ':' + pad(secs) + '.' + pad(ms, 1);
 }
