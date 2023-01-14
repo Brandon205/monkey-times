@@ -50,23 +50,26 @@ export default function Home(props) {
     let updatedStorage = JSON.stringify(storedTimes);
 
     localStorage.setItem('monkeyTimes' + session, updatedStorage);
-    console.log(localStorage.getItem('monkeyTimes' + session))
   }
 
   return (
-    <div className="flex flex-col justify-center h-screen items-center gap-10">
+    <div className="flex justify-between h-screen items-center gap-10 px-5">
       <Times user={null} session={session} setSession={setSession} storedTimes={storedTimes} />
-      <select name="event" id="event" onChange={(e) => handleEventChange(e)} tabIndex='-1'>
-        <option value="222">2x2x2</option>
-        <option value="333">3x3x3</option>
-        <option value="444">4x4x4</option>
-        <option value="555">5x5x5</option>
-        <option value="666">6x6x6</option>
-        <option value="777">7x7x7</option>
-      </select>
-      <Loader show={loading} />
-      <ScrambleComponent scramble={scramble} lastScramble={lastScramble} generateScramble={generateScramble} setScramble={setScramble} />
-      <TimerComponent scramble={scramble} generateScramble={generateScramble} session={session} addNewTime={addNewTime} />
+      <div className='flex flex-col justify-start h-screen items-center gap-10 px-3'>
+        <div className='flex flex-col justify-center'>
+          <select name="event" id="event" onChange={(e) => handleEventChange(e)} tabIndex='-1' className='p-2 bg-zinc-800 text-white text-lg'>
+            <option value="222">2x2x2</option>
+            <option value="333">3x3x3</option>
+            <option value="444">4x4x4</option>
+            <option value="555">5x5x5</option>
+            <option value="666">6x6x6</option>
+            <option value="777">7x7x7</option>
+          </select>
+          <Loader show={loading} />
+          <ScrambleComponent scramble={scramble} lastScramble={lastScramble} generateScramble={generateScramble} setScramble={setScramble} />
+        </div>
+        <TimerComponent scramble={scramble} generateScramble={generateScramble} session={session} addNewTime={addNewTime} />
+      </div>
     </div>
   )
 }

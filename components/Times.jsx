@@ -8,7 +8,6 @@ export default function Times(props) {
         setTimes(props.storedTimes)
     }, [props.storedTimes, props.session]);
 
-    console.log("TIMES: ", times)
     let content;
     if (times.length >= 1) {
         content = times.map((item, id) => {
@@ -16,7 +15,7 @@ export default function Times(props) {
 
             return (
                 <div key={id}>
-                    <p className="text-white inline">{msToTime(item.time)} </p>
+                    <p className="text-white inline text-xl">{msToTime(item.time)}</p>
                 </div>
             )
     })
@@ -25,8 +24,8 @@ export default function Times(props) {
     }
 
     return (
-        <div>
-            <select name="session" id="session" onChange={(e) => props.setSession(e.target.value)} tabIndex='-1'>
+        <div className="w-[30vw]">
+            <select name="session" id="session" onChange={(e) => props.setSession(e.target.value)} tabIndex='-1' className='p-2 bg-zinc-800 text-white text-lg'>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
