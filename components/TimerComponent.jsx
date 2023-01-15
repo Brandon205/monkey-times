@@ -7,7 +7,7 @@ export default function TimerComponent(props) {
     const [running, setRunning] = useState(false);
 
     const callback = useCallback(() => setTime(msToTimeSlow(stopwatch.getElapsedRunningTime())), []);
-    const stopwatch = useTimer({delay: 100}, callback);
+    const stopwatch = useTimer({delay: 10}, callback);
 
     const start = () => {
         stopwatch.start();
@@ -18,10 +18,9 @@ export default function TimerComponent(props) {
         stopwatch.pause()
         setRunning(false)
         setTime(msToTime(stopwatch.getElapsedRunningTime()))
-        if (props.user) {
-            // TODO: use the db to store times
-        } else {
-            // no user so store times in LS
+        if (props.user) { // TODO: use the db to store times here 
+
+        } else { // No logged in user, use LS instead
             props.addNewTime(stopwatch.getElapsedRunningTime())
         }
         props.generateScramble();

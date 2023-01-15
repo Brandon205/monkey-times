@@ -6,12 +6,14 @@ import TimerComponent from '../components/TimerComponent';
 import Loader from '../components/Loader';
 import Times from '../components/Times';
 import ScrambleComponent from '../components/ScrambleComponent';
+// import TwistyComponent from '../components/TwistyComponent';
 
 export default function Home(props) {
   const [scramble, setScramble] = useState("");
   const [lastScramble, setLastScramble] = useState("");
   const [event, setEvent] = useState('222');
   const [loading, setLoading] = useState(false);
+  const [twisty, setTwisty] = useState(true);
 
   // State for the <Times /> component
   const [session, setSession] = useState('1');
@@ -69,6 +71,7 @@ export default function Home(props) {
           <ScrambleComponent scramble={scramble} lastScramble={lastScramble} generateScramble={generateScramble} setScramble={setScramble} />
         </div>
         <TimerComponent scramble={scramble} generateScramble={generateScramble} session={session} addNewTime={addNewTime} />
+        {/* <TwistyComponent show={twisty} /> */}
       </div>
     </div>
   )
