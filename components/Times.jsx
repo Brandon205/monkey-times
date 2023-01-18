@@ -33,6 +33,23 @@ export default function Times(props) {
         content = <p className="text-white">No Stored times in this session</p>
     }
 
+    let runningAverage;
+
+    if (times.length >= 5) {
+        let total = 0;
+        let length = times.length
+        for (let i = 5; i > 0; i--) {
+            total += times[length - i]['time']
+        }
+
+        runningAverage = (
+            <div className="text-white text-center text-2xl">
+                <h3>Running Average of 5:</h3>
+                <p>{msToTime(Math.floor(total / 5))}</p>
+            </div>
+        )
+    }
+
     return (
         <div className="w-[30vw]">
             <select name="session" id="session" onChange={(e) => props.setSession(e.target.value)} tabIndex='-1' className='p-2 bg-zinc-800 text-white text-lg w-fit'>
@@ -44,6 +61,7 @@ export default function Times(props) {
             <div className="grid">
                 {content}
             </div>
+            {runningAverage}
         </div>
     )
 }
