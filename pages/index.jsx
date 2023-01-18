@@ -18,6 +18,7 @@ export default function Home(props) {
   // State for the <Times /> component
   const [session, setSession] = useState('1');
   const [storedTimes, setStoredTimes] = useState([]);
+  const [updateTimes, setUpdateTimes] = useState(false);
 
   useEffect( () => {
     generateScramble();
@@ -26,7 +27,7 @@ export default function Home(props) {
     } else {
       setStoredTimes(getGuestTimes(session))
     }
-  }, [session])
+  }, [session, updateTimes])
 
   const generateScramble = async (newEvent) => {
     setLoading(false)
@@ -42,7 +43,7 @@ export default function Home(props) {
     e.preventDefault();
 
     setEvent(e.target.value);
-    setLastScramble("")
+    setLastScramble("");
     generateScramble(e.target.value);
   }
 
@@ -56,10 +57,10 @@ export default function Home(props) {
 
   return (
     <div className="flex justify-between h-screen items-center gap-10 px-5">
-      <Times user={null} session={session} setSession={setSession} storedTimes={storedTimes} />
-      <div className='flex flex-col justify-start h-screen items-center gap-10 px-3'>
-        <div className='flex flex-col justify-center'>
-          <select name="event" id="event" onChange={(e) => handleEventChange(e)} tabIndex='-1' className='p-2 bg-zinc-800 text-white text-lg'>
+      <Times user={null} session={session} setSession={setSession} storedTimes={storedTimes} updateTimes={() => setUpdateTimes(!updateTimes)} />
+      <div className='flex flex-col justify-start h-screen items-center gap-[25vh] px-3 w-full'>
+        <div className='flex flex-col justify-center pt-10'>
+          <select name="event" id="event" onChange={(e) => handleEventChange(e)} tabIndex='-1' className='p-3 bg-zinc-800 text-white text-lg w-fit my-0 mx-auto'>
             <option value="222">2x2x2</option>
             <option value="333">3x3x3</option>
             <option value="444">4x4x4</option>
