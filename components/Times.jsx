@@ -33,22 +33,41 @@ export default function Times(props) {
         content = <p className="text-white">No Stored times in this session</p>
     }
 
-    let runningAverage;
+    let runningAverage5;
 
     if (times.length >= 5) {
         let total = 0;
-        let length = times.length
+        let length = times.length;
         for (let i = 5; i > 0; i--) {
             total += times[length - i]['time']
         }
 
-        runningAverage = (
+        runningAverage5 = (
             <div className="text-white text-center text-2xl">
                 <h3>Running Average of 5:</h3>
                 <p>{msToTime(Math.floor(total / 5))}</p>
             </div>
         )
     }
+
+    let runningAverage12;
+
+    if (times.length >= 12) {
+        let total = 0;
+        let length = times.length;
+        for (let i = 12; i > 0; i--) {
+            total += times[length - i]['time']
+        }
+
+        runningAverage12 = (
+            <div className="text-white text-center text-2xl">
+                <h3>Running Average of 12:</h3>
+                <p>{msToTime(Math.floor(total / 12))}</p>
+            </div>
+        )
+    }
+
+
 
     return (
         <div className="w-[30vw]">
@@ -61,7 +80,8 @@ export default function Times(props) {
             <div className="grid">
                 {content}
             </div>
-            {runningAverage}
+            {runningAverage5}
+            {runningAverage12}
         </div>
     )
 }
