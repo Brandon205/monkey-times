@@ -1,5 +1,6 @@
 import { useContext, useEffect, useCallback, useState } from 'react';
-import { auth, googleAuthProvider } from '../lib/firebase';
+import { firestore, auth, googleAuthProvider } from '../lib/firebase';
+import { signInWithPopup } from 'firebase/auth';
 import { UserContext } from '../lib/context';
 import debounce from 'lodash.debounce';
 
@@ -24,7 +25,7 @@ export default function EnterPage( { } ) {
 
 function SignInButton() {
     const signInWithGoogle = async () => {
-        await auth.signInWithPopup(googleAuthProvider);
+        await signInWithPopup(auth, googleAuthProvider);
     }
 
     return (
@@ -54,8 +55,9 @@ function UsernameForm() {
     const checkUsername = useCallback(
             debounce(async (username) => {
                 if (username.length >= 3) {
-                    const ref = doc(`usernames/${username}`);
-                    const { exists } = await ref.get();
+                    const ref = doc(firestore, `usernames/${username}`);
+                    const exists = ref.exists;
+                    // const exists = doc(firestore, `usernames/${username}`).exists
                     console.log('Firestore read executed!');
                     setIsValid(!exists);
                     setLoading(false)
@@ -85,10 +87,10 @@ function UsernameForm() {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const userDoc = doc(`users/${user.uid}`);
-        const usernameDoc = doc(`usernames/${formValue}`);
+        const userDoc = doc(firestore, `users/${user.uid}`);
+        const usernameDoc = doc(firestore, `usernames/${formValue}`);
 
-        const batch = writeBatch();
+        const batch = writeBatch(firestore);
         batch.set(userDoc, { username: formValue, photoURL: user.photoURL, displayName: user.displayName })
         batch.set(usernameDoc, { uid: user.uid })
 
@@ -125,9 +127,9 @@ function UsernameMessage({ username, isValid, loading }) {
     if (loading) {
         return <p>Checking...</p>;
     } else if (isValid) {
-        return <p className="text-red-600 font-bold">{username} is available!</p>;
+        return <p className="text-green-600 font-bold">{username} is available!</p>;
     } else if (username && !isValid) {
-        return <p className="text-green-600 font-bold">That username is taken!</p>;
+        return <p className="text-red-600 font-bold">That username is taken!</p>;
     } else {
         return <p></p>
     }
