@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import Navbar from '../components/Navbar';
 import { Toaster } from 'react-hot-toast';
 import { UserContext } from '../lib/context';
 import { useUserData } from '../lib/hooks';
@@ -10,6 +11,7 @@ export default function App({ Component, pageProps }) {
   return (
     <UserContext.Provider value={userData}>
       <div className="bg-zinc-700 min-h-screen">
+        <Navbar />
         <Component {...pageProps} />
         <Toaster />
       </div>
