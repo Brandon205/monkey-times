@@ -70,7 +70,7 @@ export default function Times(props) {
 
 
     return (
-        <div className="w-[30vw]">
+        <div className="w-[30vw] items-center">
             <select name="session" id="session" onChange={(e) => props.setSession(e.target.value)} tabIndex='-1' className='p-2 bg-zinc-800 text-white text-lg w-fit'>
                 <option value="1">Session 1</option>
                 <option value="2">Session 2</option>

@@ -13,7 +13,7 @@ export default function Home(props) {
   const [lastScramble, setLastScramble] = useState("");
   const [event, setEvent] = useState('222');
   const [loading, setLoading] = useState(false);
-  const [twisty, setTwisty] = useState(true);
+  // const [twisty, setTwisty] = useState(true);
 
   // State for the <Times /> component
   const [session, setSession] = useState('1');
