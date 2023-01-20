@@ -15,8 +15,8 @@ export default function Navbar() {
     }
 
     return (
-        <nav className="navbar">
-            <ul>
+        <nav className="w-screen h-[70px] bg-zinc-600 text-white fixed top-0 pt-0 px-[10vw] font-bold border-b-gray-600 border-b-2 z-40">
+            <ul className='list-none m-0 p-0 flex items-center justify-between h-full'>
                 <li>
                     <Link href="/">
                         <button className='btn-logo'>CubeX</button>
@@ -26,12 +26,12 @@ export default function Navbar() {
                 {/* user is signed in and has username */}
                 {username && (
                     <>
-                        <li className='push-left'>
+                        <li className='ml-auto mr-2'>
                             <button onClick={signOut}>Sign Out</button>
                         </li>
                         <li>
                             <Link href={`/${username}`}>
-                                <img src={user?.photoURL || './hacker.png'} />
+                                <img className='rounded-2xl w-[50px] h-[50px] cursor-pointer' src={user?.photoURL || './hacker.png'} />
                             </Link>
                         </li>
                     </>

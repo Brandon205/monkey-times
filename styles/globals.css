@@ -9,9 +9,6 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    /* margin-top: 25px */
 }
 
 main {
@@ -40,24 +37,9 @@ a {
     box-sizing: border-box;
 }
 
-/* img {
-    max-width: 100%;
-}
-
-input {
-    display: inline-block;
-    outline: none;
+.btn {
     border: none;
-    font-size: 1.5rem;
-    width: 100%;
-    padding: 5px 10px;
-}
-
-.btn,
-button {
-    background-color: var(--color-gray);
-    border: none;
-    color: var(--color-text);
+    color: white;
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
@@ -70,60 +52,3 @@ button {
     cursor: pointer;
     margin: 0.5rem 1rem 0.5rem 0;
 }
-
-@media only screen and (max-width: 768px) {
-    button {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-    }
-}
-
-button:hover {
-    filter: brightness(90%);
-}
-
-button:disabled,
-button[disabled] {
-    filter: brightness(80%);
-    cursor: not-allowed;
-}
-
-.navbar {
-    height: 70px;
-    width: 100%;
-    background: white;
-    color: var(--colors-text);
-    position: fixed;
-    top: 0;
-    padding: 0 10vw;
-    font-weight: bold;
-    border-bottom: 1px solid var(--color-gray);
-    z-index: 99;
-}
-
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-}
-
-.navbar img {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-}
-
-.navbar li {
-    border-radius: 50%;
-}
-
-.push-left {
-    margin-left: auto;
-}
-
-*/

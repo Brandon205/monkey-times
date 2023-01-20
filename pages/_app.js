@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <UserContext.Provider value={userData}>
-      <div className="bg-zinc-700 min-h-screen">
+      <div className="bg-zinc-700 min-h-screen pt-[70px]">
         <Navbar />
         <Component {...pageProps} />
         <Toaster />

@@ -13,7 +13,7 @@ export default function EnterPage( { } ) {
     // 2. user signed in, but missing username <UsernameForm />
     // 3. user signed in, has username <SignOutButton />
     return (
-        <main>
+        <main className='flex justify-center'>
             {user ? 
                 !username ? <UsernameForm /> : <SignOutButton />
                 :
@@ -29,14 +29,14 @@ function SignInButton() {
     }
 
     return (
-        <button className='bg-white text-black' onClick={signInWithGoogle}>
+        <button className='text-black btn bg-slate-800' onClick={signInWithGoogle}>
             <img className='w-[30px] mr-2' src={'/google.png'} alt="google logo" /> Sign in with Google
         </button>
     )
 }
 
 function SignOutButton() {
-    return <button onClick={() => auth.signOut()}>Sign Out</button>;
+    return <button className='btn bg-slate-800' onClick={() => auth.signOut()}>Sign Out</button>;
 }
 
 function UsernameForm() {
@@ -57,7 +57,6 @@ function UsernameForm() {
                 if (username.length >= 3) {
                     const ref = doc(firestore, `usernames/${username}`);
                     const exists = ref.exists;
-                    // const exists = doc(firestore, `usernames/${username}`).exists
                     console.log('Firestore read executed!');
                     setIsValid(!exists);
                     setLoading(false)
@@ -103,11 +102,11 @@ function UsernameForm() {
             <section>
                 <h3>Choose Username</h3>
                 <form onSubmit={onSubmit}>
-                    <input name="username" placeholder="username" value={formValue} onChange={onChange} />
+                    <input name="username" placeholder="username" value={formValue} onChange={onChange} className='inline-block outline-none border-none text-2xl w-full py-1 px-2' />
 
                     <UsernameMessage username={formValue} isValid={isValid} loading={loading} />
 
-                    <button type="submit" className='bg-green-600 text-black' disabled={!isValid}>Choose</button>
+                    <button type="submit" className='bg-green-600 text-black btn' disabled={!isValid}>Choose</button>
 
                     <h3>Debug State</h3>
                     <div>
