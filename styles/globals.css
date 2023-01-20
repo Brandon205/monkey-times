@@ -11,7 +11,7 @@ body {
     font-family: 'Noto Sans', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text);
-    margin-top: 25px
+    /* margin-top: 25px */
 }
 
 main {
@@ -40,7 +40,7 @@ a {
     box-sizing: border-box;
 }
 
-img {
+/* img {
     max-width: 100%;
 }
 
@@ -88,7 +88,6 @@ button[disabled] {
     cursor: not-allowed;
 }
 
-/* Navbar */
 .navbar {
     height: 70px;
     width: 100%;
@@ -121,5 +120,10 @@ button[disabled] {
 
 .navbar li {
     border-radius: 50%;
-
 }
+
+.push-left {
+    margin-left: auto;
+}
+
+*/
